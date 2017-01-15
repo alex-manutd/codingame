@@ -1,0 +1,58 @@
+import java.util.*;
+import java.io.*;
+import java.math.*;
+
+class Solution {
+
+    public static void main(String args[]) {
+        
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt(); // the number of temperatures to analyse
+        in.nextLine();
+        String temps = in.nextLine(); // the n temperatures expressed as integers ranging from -273 to 5526
+        
+        if (n == 0) {
+            System.out.println(n);
+        }
+        else {
+            int m;
+            int closestPos;
+            int closestNeg;
+            String [] tokens = temps.split(" ");
+            //n = new int [tokens.length]; 
+            int [] inTokens; 
+            inTokens[0] = Integer.parseInt(tokens[0]); 
+                        
+            if (inTokens[0] == 0) {            
+            System.out.println(inTokens[0]);
+            }
+            else if (inTokens[0] > 0) {
+                closestPos = inTokens[0];
+            }
+            else if (inTokens[0] < 0) {
+                closestNeg = inTokens[0];
+            }
+            
+            for (m = 1; m < n; m++) {
+                
+                inTokens[m] = Integer.parseInt(tokens[m]);
+                //System.out.println(inTokens[m]);
+                
+                if (inTokens[m] > 0 && inTokens[m] <= closestPos) {
+                        closestPos = inTokens[m];
+                    }
+                else if (inTokens[m] < 0 && inTokens[m] >= negativePos) {
+                        closestNeg = inTokens[m];
+                }
+                
+                if (closestPos <= Math.abs(closestNeg)) {
+                    System.out.println(closestPos);
+                    }
+                else {
+                    System.out.println(closestNeg);
+                    }                    
+            }
+              
+        }
+    }
+}
